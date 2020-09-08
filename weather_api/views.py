@@ -1,4 +1,5 @@
-from django.shortcuts import render
+#from django.shortcuts import render
+from rest_framework.response import Response
 
 def index(request):
 
@@ -13,6 +14,5 @@ def index(request):
         'icon' : city_weather['weather'][0]['icon']
     }
 
-    context = {'weather' : weather}
-
-    return render(request, 'weather/index.html', context) #returns the index.html template
+    return Response({'weather' : weather})
+#    return render(request, 'weather/index.html', context) #returns the index.html template
