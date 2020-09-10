@@ -4,7 +4,7 @@ from .models import City
 class CityForm(ModelForm):
     class Meta:
         model = City
-        fields = ['formname']
+        fields = ['name']
         widgets = {
-            'formname': TextInput(attrs={'class' : 'input', 'placeholder' : 'City Name'}),
+            'name': TextInput(attrs={'class' : 'input', 'placeholder' : 'City Name'}),
         } #updates the input class to have the correct Bulma class and placeholder
