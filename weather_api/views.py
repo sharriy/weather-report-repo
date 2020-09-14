@@ -59,5 +59,5 @@ def index(request):
 
     obj = Weather(weather_data)
     weather_serializer = serializer_class(obj)
-    message = weather_serializer.data
-    return JsonResponse(message )
+    weatherinfo = weather_serializer.data
+    return JsonResponse({'weatherinfo': weatherinfo} )
