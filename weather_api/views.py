@@ -2,7 +2,7 @@
 from django.http import JsonResponse
 from rest_framework.response import Response
 from rest_framework.renderers import JSONRenderer
-from rest_framework import viewsets
+from rest_framework import viewsets, permissions
 from rest_framework import filters
 
 import requests
@@ -42,6 +42,10 @@ def index(request):
     url = 'http://api.openweathermap.org/data/2.5/weather?q={}&units=imperial&appid=0871a0f9691204fa0330e5caf06aae69'
     cities = City.objects.all()
 
+    permission_classes = [
+        permissions.AllowAny
+    ]
+    
     serializer_class = serializer.CitySerializer
 
     weather_data = []
