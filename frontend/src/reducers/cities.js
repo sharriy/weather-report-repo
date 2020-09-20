@@ -1,4 +1,5 @@
-import { GET_LEADS } from "../actions/types.js";
+import { GET_CITIES, REMOVE_CITY, ADD_CITY } from "../actions/types.js";
+
 
 const initialState = {
   cities: []
@@ -14,7 +15,12 @@ export default function(state = initialState, action){
     case 'REMOVE_CITY':
       return {
         ...state,
-        cities: state.cities.filter(city => city.name !== action.payload)
+        cities: state.cities.filter(city => city.id !== action.payload)
+      };
+    case 'ADD_CITY':
+      return {
+        ...state,
+        cities: [...state.cities, action.payload]
       };
     default:
       return state;

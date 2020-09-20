@@ -1,8 +1,10 @@
 from rest_framework import serializers
-from weather_api import models
+from .models import City
 
-class CSerializer(serializers.Serializer):
-    name = serializers.CharField(max_length = 25)
+class CSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = City
+        fields = '__all__'
 
 
 

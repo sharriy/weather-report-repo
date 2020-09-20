@@ -8,6 +8,6 @@ router = DefaultRouter()
 router.register('citylist', views.CityViewSet)
 
 urlpatterns = [
-    path('weather/', views.index),
+    path('weathers/', views.index),
     path('',include(router.urls))
 ]
