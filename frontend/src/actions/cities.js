@@ -39,6 +39,17 @@ export const addCity = (city) => dispatch => {
       payload: res.data
     });
   })
+  .then(res => {
+    return axios
+    .get("/weathers")
+    .then(res => {
+      dispatch({
+        type: GET_WEATHER,
+        payload: res.data
+      });
+    })
+    .catch(err => console.log(err));
+  })
   .catch(err => console.log(err));
 }
 

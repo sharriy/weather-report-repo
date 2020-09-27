@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component, PureComponent} from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { addCity, getWeather } from '../../actions/cities';
 
 
-export class Form extends Component {
+export class Form extends PureComponent {
   state = {
     name: ''
   };
@@ -21,7 +21,6 @@ export class Form extends Component {
   //  const { name } = this.state;
     const city = this.state;
     this.props.addCity(city);
-    this.props.getWeather();
   };
 
   render() {

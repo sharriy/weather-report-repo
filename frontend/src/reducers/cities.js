@@ -27,7 +27,7 @@ export default function(state = initialState, action){
    case 'GET_WEATHER':
       return {
         ...state,
-        data: action.payload
+        data: action.payload,
       };
     default:
       return state;

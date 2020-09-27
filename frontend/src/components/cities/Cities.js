@@ -1,11 +1,11 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component, Fragment, PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getCities, removeCity, getWeather } from '../../actions/cities';
 import axios from 'axios';
 
 
-export class Cities extends Component {
+export class Cities extends PureComponent {
 
   /*constructor(props) {
     super(props);
