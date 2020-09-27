@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { GET_CITIES, REMOVE_CITY, ADD_CITY } from './types';
+import { GET_CITIES, REMOVE_CITY, ADD_CITY, GET_WEATHER} from './types';
 
 // GET CITIES
 export const getCities = () => dispatch => {
@@ -43,9 +43,9 @@ export const addCity = (city) => dispatch => {
 }
 
 //get weathers
-export const getWeather = () => dispatvh => {
+export const getWeather = () => dispatch => {
   axios
-  .post("/weathers/", city)
+  .get("/weathers")
   .then(res => {
     dispatch({
       type: GET_WEATHER,

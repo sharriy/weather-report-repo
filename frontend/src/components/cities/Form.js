@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { addCity } from '../../actions/cities';
+import { addCity, getWeather } from '../../actions/cities';
+
 
 export class Form extends Component {
   state = {
@@ -17,9 +18,10 @@ export class Form extends Component {
 
   onSubmit = e => {
     e.preventDefault();
-    const { name, email, message } = this.state;
-    const city = { name };
+  //  const { name } = this.state;
+    const city = this.state;
     this.props.addCity(city);
+    this.props.getWeather();
   };
 
   render() {
@@ -52,4 +54,4 @@ export class Form extends Component {
   }
 }
 
-export default connect(null, { addCity })(Form);
+export default connect(null, { addCity, getWeather })(Form);

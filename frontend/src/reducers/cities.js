@@ -1,8 +1,9 @@
-import { GET_CITIES, REMOVE_CITY, ADD_CITY } from "../actions/types.js";
+import { GET_CITIES, REMOVE_CITY, ADD_CITY, GET_WEATHER } from "../actions/types.js";
 
 
 const initialState = {
-  cities: []
+  cities: [],
+  data: [],
 }
 
 export default function(state = initialState, action){
@@ -20,7 +21,13 @@ export default function(state = initialState, action){
     case 'ADD_CITY':
       return {
         ...state,
-        cities: [...state.cities, action.payload]
+        cities: [...state.cities, action.payload],
+        data: [...state.data]
+      };
+   case 'GET_WEATHER':
+      return {
+        ...state,
+        data: action.payload
       };
     default:
       return state;

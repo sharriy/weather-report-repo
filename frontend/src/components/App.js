@@ -4,6 +4,8 @@ import ReactDOM from 'react-dom';
 import Header from './layout/Header';
 import Cities from './cities/Cities';
 import Form from './cities/Form';
+import Try1 from './cities/try1';
+
 
 import { Provider } from 'react-redux';
 import store from '../store';
@@ -46,9 +48,9 @@ class App extends Component{
         <Fragment>
           <Header />
             <div className="container">
-              <Form />
-              <Cities />
-
+        
+<Form/>
+<Cities/>
             </div>
         </Fragment>
       </Provider>

@@ -1,31 +1,39 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { getCities, removeCity, getWeather } from '../../actions/cities';
+import { getCities, removeCity } from '../../actions/cities';
 import axios from 'axios';
+import { addCity, updateList } from '../../actions/cities';
 
 
-export class Cities extends Component {
 
-  /*constructor(props) {
+
+export class Try1 extends Component {
+
+  constructor(props) {
     super(props);
     this.state = {
       data: [],
+      name:'',
     };
 
-  }*/
+  }
 
-  /*removeCity = (name) => {
+  onChange = e => this.setState({ [e.target.name]:
+    e.target.value});
+
+  onSubmit = e => {
     e.preventDefault();
-  //  const { name } = this.state;
-    const id = this.state;
-    this.props.removeCity(id);
-  };*/
+    const { name } = this.state.name;
+    const city = { name };
+    this.props.addCity(city);
+  };
+
 
   componentDidMount() {
     this.props.getCities();
-    this.props.getWeather();}
-  /*  axios
+
+    axios
     .get("/weathers")
     .then(res => {return res.data})
     .then(data => {
@@ -36,9 +44,9 @@ export class Cities extends Component {
       });
     })
     .catch(err => console.log(err));
-  }*/
+  }
 
-/*  shouldComponentUpdate(nextProps, nextState) {
+  /*shouldComponentUpdate(nextProps, nextState) {
     console.log('should component update');
     return this.props.updateCitiesList;
   }
@@ -57,25 +65,47 @@ export class Cities extends Component {
       });
     })
     .catch(err => console.log(err));
-  }*/
-
+  }
+*/
   static propTypes = {
     cities: PropTypes.array.isRequired,
     getCities: PropTypes.func.isRequired,
-    removeCity: PropTypes.func.isRequired,
-    getWeather: PropTypes.func.isRequired,
+    removeCity: PropTypes.func.isRequired
+
   }
 
 
   render() {
+    const { name } = this.state.name;
     return (
       <Fragment>
+      <div className="card card-body mt-4 mb-4">
+
+        <form onSubmit={this.onSubmit}>
+          <div className="form-group">
+            <label> Add city to know its weather</label>
+            <input
+              className="form-control"
+              type="text"
+              name="name"
+              onChange={this.onChange}
+              value={name}
+            />
+          </div>
+          <div className="form-group">
+            <button type="submit" className="btn btn-primary">
+              Add
+            </button>
+          </div>
+        </form>
+      </div>
+
         <h2>Weather of added cities</h2>
         <section className="container">
                           <div className="columns">
                               <div className="column is-offset-4 is-4">
 
-                                {this.props.data.map((name) => {return(
+                                {this.state.data.map((name) => {return(
                                 <div className="box">
                                   <article className="media">
                                     <div className="media-left">
@@ -92,7 +122,7 @@ export class Cities extends Component {
                                           <span className="subtitle">{ name.temperature} ° F</span>
                                           <br/> { name.description}
                                         </p>
-                                        <br/><button onClick={this.props.removeCity.bind(this,name.id)} className="btn btn-danger btn-sm">
+                                        <br/><button className="btn btn-danger btn-sm">
                               Remove City</button>
                                       </div>
                                     </div>
@@ -114,11 +144,11 @@ export class Cities extends Component {
 }
 const mapStateToProps = state => ({
   cities: state.cities.cities,
-  data:state.cities.data,
+  updateCitiesList: state.cities.updateCitiesList
 });
 
 
 export default connect(
   mapStateToProps,
-  { getCities, removeCity, getWeather}
-)(Cities);
+  { getCities, removeCity, addCity }
+)(Try1);

@@ -45,6 +45,7 @@ def index(request):
         #city_serializer = serializer_class(city)
 
         weather = {
+            'id' : city.id,
             'city':city_weather['name'] ,
             'temperature' : city_weather['main']['temp'],
             'description' : city_weather['weather'][0]['description'],
